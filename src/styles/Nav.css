@@ -1,0 +1,15 @@
+header{
+    display: flex;
+    border: 1px black solid;
+    justify-content: space-between;
+}
+nav{
+    display: flex;
+    border: 1px black solid;
+    width: 40%;
+    justify-content: space-evenly;
+}
+.title{
+    flex: 1 1 auto;
+    text-align: center;
+}

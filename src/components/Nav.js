@@ -1,0 +1,18 @@
+import '../styles/Nav.css'
+import { Link } from 'react-router-dom'
+
+const Nav = ()=>{
+    return (
+        <header>
+            <div className='title'>
+                <h1>Shopping Cart</h1>
+            </div>
+            <nav>
+                <div><h2><Link to="/">Homepage</Link></h2></div>
+                <div><h2><Link to="/Shop">Shop</Link></h2></div>
+            </nav>
+        </header>
+    )
+}
+
+export default Nav
