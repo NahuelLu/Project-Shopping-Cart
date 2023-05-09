@@ -1,0 +1,12 @@
+.homepage{
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.images-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
