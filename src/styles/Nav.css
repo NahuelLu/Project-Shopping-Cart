@@ -3,7 +3,7 @@ header{
     border: 1px black solid;
     justify-content: space-between;
 }
-nav{
+header nav{
     display: flex;
     border: 1px black solid;
     width: 40%;
