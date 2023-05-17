@@ -1,9 +1,13 @@
 import '../styles/Cart.css'
-const Cart = ({itemsCart})=>{
+import { useOutletContext } from 'react-router-dom'
+import ItemCart from './ItemCart'
+const Cart = ()=>{
+    const [itemsCart,books,setItemsCart] = useOutletContext()
     return(
         <div className="cart-container">
-            <h2>Current items</h2>
-            {itemsCart?itemsCart.map(item => JSON.stringify(item)):null}
+            <h2>Current Cart</h2>
+            <div className='items-cart-container'>{itemsCart?itemsCart.map(item => <ItemCart key={item.id}item={item}></ItemCart>):null}</div>
+            {itemsCart?<h2>Total: ${itemsCart.map(item => item.price * item.amount).reduce((accumulator, current) => current + accumulator,0)}</h2>:null}
         </div>
     )
 }

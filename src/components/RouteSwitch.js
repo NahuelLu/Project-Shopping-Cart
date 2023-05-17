@@ -1,17 +1,21 @@
 import Shop from "./Shop";
 import Homepage from "./Homepage";
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Nav from "./Nav";
+import {
+  createBrowserRouter,
+  Link,
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
 
-const RouteSwitch = ({children,setProducts,products}) => {
+const RouteSwitch = () => {
     return (
-      <BrowserRouter>
-        {children}
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/shop" element={<Shop setProducts={setProducts} products={products}/>} />
-        </Routes>
-      </BrowserRouter>
+        <Route path="/" element={<Nav/>}>
+          <Route path="/Homepage" element={<Homepage />} />
+          <Route path="/shop" element={<Shop />} />
+        </Route>
     );
   };
   
