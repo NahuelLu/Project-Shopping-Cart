@@ -1,8 +1,8 @@
 import Bar from "./Bar"
 import '../styles/Shop.css'
 import {useEffect} from "react"
-import {  Outlet } from "react-router-dom"
 import { useShopContext } from "./ShopContext"
+import ShopItems from "./ShopItems"
 
 const Shop = ()=>{
     const {amountItems,setAmountItems,books,setBooks,itemsCart,setItemsCart} = useShopContext()
@@ -33,8 +33,8 @@ const Shop = ()=>{
 
     return(
         <main className="shop-container">
-        <Bar amount={amountItems}></Bar>
-        <Outlet context={[itemsCart,books,setItemsCart]}></Outlet>
+            <Bar amount={amountItems}></Bar>
+            <ShopItems></ShopItems>
         </main>
     )
 }

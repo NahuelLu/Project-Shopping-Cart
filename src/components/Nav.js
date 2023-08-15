@@ -13,6 +13,7 @@ const Nav = ()=>{
             <nav>
                 <div><h2><Link to="/Homepage">Homepage</Link></h2></div>
                 <div><h2><Link to="/Shop">Shop</Link></h2></div>
+                <div><h2><Link to="/Cart">Cart</Link></h2></div>
             </nav>
         </header>
         <ShopProvider><Outlet></Outlet></ShopProvider>
