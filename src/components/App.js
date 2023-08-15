@@ -7,10 +7,8 @@ import Cart from './Cart';
 import ShopItems from './ShopItems';
 import {
   createBrowserRouter,
-  Link,
   Route,
   RouterProvider,
-  Routes,
   createRoutesFromElements
 } from "react-router-dom";
 

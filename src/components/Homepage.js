@@ -6,9 +6,15 @@ import Img2 from '../imgs/img2.jpg'
 import Img3 from '../imgs/img3.jpg'
 import Img4 from '../imgs/img4.jpg'
 import Img5 from '../imgs/img5.jpg'
+import { useEffect } from 'react'
 
 
 const Homepage = ()=>{
+    useEffect(()=>{
+        return ()=>{console.log("Component was unmounted!")}
+    },[]
+    )
+    
     return(
         <main className="homepage">
             <div><h2>Some random Fan Arts of Michaeng!</h2></div>

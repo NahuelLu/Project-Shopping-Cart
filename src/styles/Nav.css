@@ -1,11 +1,9 @@
 header{
     display: flex;
-    border: 1px black solid;
     justify-content: space-between;
 }
 header nav{
     display: flex;
-    border: 1px black solid;
     width: 40%;
     justify-content: space-evenly;
 }

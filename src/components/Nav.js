@@ -1,6 +1,7 @@
 import '../styles/Nav.css'
 import { Link } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
+import { ShopProvider } from "./ShopContext";
 
 const Nav = ()=>{
     return (
@@ -14,7 +15,7 @@ const Nav = ()=>{
                 <div><h2><Link to="/Shop">Shop</Link></h2></div>
             </nav>
         </header>
-        <Outlet></Outlet>
+        <ShopProvider><Outlet></Outlet></ShopProvider>
         </>
     )
 }

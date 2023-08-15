@@ -1,32 +1,40 @@
 import Bar from "./Bar"
 import '../styles/Shop.css'
-import { useState,useEffect} from "react"
-
+import {useEffect} from "react"
 import {  Outlet } from "react-router-dom"
+import { useShopContext } from "./ShopContext"
+
 const Shop = ()=>{
-    const [amountItems, setAmountItems ] = useState(0)
-    const [books, setBooks] = useState([])
-    const [itemsCart, setItemsCart] = useState([])
+    const {amountItems,setAmountItems,books,setBooks,itemsCart,setItemsCart} = useShopContext()
+    const fetchingData = async ()=>{
+        const response = await fetch("https://www.googleapis.com/books/v1/volumes?q=inauthor:Anna Pólux")
+        const data = await response.json()
+        const items = data.items
+        return items
+    }
+
     useEffect(()=>{
-        const fetchingData = async ()=>{
-            const response = await fetch("https://www.googleapis.com/books/v1/volumes?q=inauthor:Anna Pólux");
-            const data = await response.json()
-            const items = data.items
-            return items
-        }
-        fetchingData().then(items => {
-            console.log(items)
+        const data = fetchingData()
+        data.then(items => {
             setBooks(items)
         })
+        console.log("Component was mounted!")
+        return ()=>{console.log("Component was unmounted!")}
     },[])
+
+
     useEffect(()=>{
-        setAmountItems(prevAmount => itemsCart.map(item => item.amount).reduce((accumulator, currentAmount) => currentAmount + accumulator,0))
-        console.log(itemsCart)
+        setAmountItems( () => 
+            itemsCart
+                    .map(item => item.amount)
+                    .reduce((accumulator, currentAmount) => currentAmount + accumulator,0)
+        )
     },[itemsCart])
+
     return(
         <main className="shop-container">
-            <Bar amount={amountItems}></Bar>
-            <Outlet context={[itemsCart,books,setItemsCart]}></Outlet>
+        <Bar amount={amountItems}></Bar>
+        <Outlet context={[itemsCart,books,setItemsCart]}></Outlet>
         </main>
     )
 }
