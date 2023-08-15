@@ -1,8 +1,9 @@
 import '../styles/Nav.css'
-import { Link } from 'react-router-dom'
 import { Outlet } from 'react-router-dom'
 import { ShopProvider } from "./ShopContext";
+import {faCartShopping,faBook,faHouse} from '@fortawesome/free-solid-svg-icons'
 
+import Section from './Section';
 const Nav = ()=>{
     return (
         <>
@@ -11,9 +12,9 @@ const Nav = ()=>{
                 <h1>Shopping Cart</h1>
             </div>
             <nav>
-                <div><h2><Link to="/Homepage">Homepage</Link></h2></div>
-                <div><h2><Link to="/Shop">Shop</Link></h2></div>
-                <div><h2><Link to="/Cart">Cart</Link></h2></div>
+                <Section icon={faHouse} name="homepage"></Section>
+                <Section icon={faBook} name="shop"></Section>
+                <Section icon={faCartShopping} name="cart"></Section>
             </nav>
         </header>
         <ShopProvider><Outlet></Outlet></ShopProvider>
@@ -21,4 +22,4 @@ const Nav = ()=>{
     )
 }
 
-export default Nav
+export default Nav  

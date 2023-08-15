@@ -4,7 +4,6 @@ import React from "react";
 import Nav from "./Nav";
 import Shop from "./Shop";
 import Cart from './Cart';
-import ShopItems from './ShopItems';
 import {
   createBrowserRouter,
   Route,

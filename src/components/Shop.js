@@ -5,7 +5,7 @@ import { useShopContext } from "./ShopContext"
 import ShopItems from "./ShopItems"
 
 const Shop = ()=>{
-    const {amountItems,setAmountItems,books,setBooks,itemsCart,setItemsCart} = useShopContext()
+    const {amountItems,setAmountItems,setBooks,itemsCart} = useShopContext()
     const fetchingData = async ()=>{
         const response = await fetch("https://www.googleapis.com/books/v1/volumes?q=inauthor:Anna Pólux")
         const data = await response.json()
@@ -17,10 +17,10 @@ const Shop = ()=>{
         const data = fetchingData()
         data.then(items => {
             setBooks(items)
-        })
+        }).catch(error => console.log(error))
         console.log("Component was mounted!")
-        return ()=>{console.log("Component was unmounted!")}
-    },[])
+        return ()=>{console.log ("Component was unmounted!")}
+    },[setBooks])
 
 
     useEffect(()=>{

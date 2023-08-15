@@ -1,5 +1,4 @@
 import '../styles/Cart.css'
-import { useOutletContext } from 'react-router-dom'
 import ItemCart from './ItemCart'
 import { useShopContext } from './ShopContext'
 

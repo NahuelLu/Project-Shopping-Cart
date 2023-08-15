@@ -26,8 +26,6 @@ const Product = ({book,setItemsCart})=>{
         <>
         {book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail && book.volumeInfo.description?
             <div className='book-container'>
-                <div>{book.volumeInfo.title}</div>
-                <br></br>
                 <div>
                     {<img src={book.volumeInfo.imageLinks.thumbnail} alt="Book thumbnail" />}
                 </div>
