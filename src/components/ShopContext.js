@@ -27,8 +27,6 @@ export function ShopProvider({ children }) {
     const contextValue = {
         amountItems,
         setAmountItems,
-        books,
-        setBooks,
         itemsCart,
         setItemsCart,
         images

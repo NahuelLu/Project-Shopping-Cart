@@ -26,6 +26,8 @@ const sumAllItemsPrices = (itemsCart) => {
         .map(item => item.amount)
         .reduce((accumulator, currentAmount) => currentAmount + accumulator,0)
 }
+
+
 const Shop = ()=>{
     const {amountItems,setAmountItems,itemsCart} = useShopContext()
 

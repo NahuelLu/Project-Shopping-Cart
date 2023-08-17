@@ -1,5 +1,16 @@
 import '../styles/Product.css'
 import { useState } from 'react'
+import ItemCart from './ItemCart'
+
+
+const alreadyExistsBookInCart =  (book, cart) => cart.some(item => item.id===book.id)
+const addAmountItem = (itemCart, amountToAdd) => {return    {...itemCart,amount:itemCart.amount + amountToAdd}}
+const updateCartWithBookSelected = (book, cart,amountItem) =>  cart.map( itemCart => (itemCart.id === book.id)?addAmountItem(ItemCart,amountItem):itemCart) 
+const addNewBookToCart = (cart, book,amountItem) => {
+    const newBook = {title:book.volumeInfo.title,id:book.id,img:book.volumeInfo.imageLinks.thumbnail,price:book.saleInfo.listPrice.amount,amount:amountItem}
+    return cart.concat([newBook])
+}
+
 const Product = ({book,setItemsCart})=>{
     const [buyStatus, setBuyStatus] = useState(false)
     const [amountItem, setAmountItem] = useState(0)
@@ -19,9 +30,10 @@ const Product = ({book,setItemsCart})=>{
     }
     const handleSubmit = (e)=>{
         e.preventDefault()
-        setItemsCart(prevItemsCart => (prevItemsCart.some(item => item.id===book.id) ? (prevItemsCart.map((item) => (item.id === book.id)?{...item,amount:item.amount + amountItem}:item)):[...prevItemsCart,...[{title:book.volumeInfo.title,id:book.id,img:book.volumeInfo.imageLinks.thumbnail,price:book.saleInfo.listPrice.amount,amount:amountItem}]]))
+        setItemsCart(prevItemsCart => alreadyExistsBookInCart(book, prevItemsCart) ? updateCartWithBookSelected(book,prevItemsCart,amountItem): addNewBookToCart(prevItemsCart,book,amountItem) )
         setBuyStatus(false)
     }
+    
     return(
         <>
         {book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail && book.volumeInfo.description?
