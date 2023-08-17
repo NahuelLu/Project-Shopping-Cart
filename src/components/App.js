@@ -4,6 +4,8 @@ import React from "react";
 import Nav from "./Nav";
 import Shop from "./Shop";
 import Cart from './Cart';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
 import {
   createBrowserRouter,
   Route,
@@ -19,7 +21,15 @@ const router = createBrowserRouter(createRoutesFromElements(
   </Route>
 ));
 function App() {
-  return  <div className="App"><RouterProvider router={router} /></div>
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        refetchOnMount: false
+      },
+    },
+  })
+  return <QueryClientProvider client={queryClient}><div className="App"><RouterProvider router={router} /></div></QueryClientProvider>
 }
 
 export default App;

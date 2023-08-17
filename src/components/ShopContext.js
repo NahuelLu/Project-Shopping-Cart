@@ -23,17 +23,18 @@ export function ShopProvider({ children }) {
     useEffect(()=>{
         setImages(imagesUrl)
     },[])
+
     const contextValue = {
-    amountItems,
-    setAmountItems,
-    books,
-    setBooks,
-    itemsCart,
-    setItemsCart,
-    images
+        amountItems,
+        setAmountItems,
+        books,
+        setBooks,
+        itemsCart,
+        setItemsCart,
+        images
     };
 
     return (
-    <ShopContext.Provider value={contextValue}>{children}</ShopContext.Provider>
+        <ShopContext.Provider value={contextValue}>{children}</ShopContext.Provider>
     );
 }
