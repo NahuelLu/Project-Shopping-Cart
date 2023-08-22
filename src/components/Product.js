@@ -6,7 +6,7 @@ import { useShopContext } from './ShopContext'
 
 const alreadyExistsBookInCart =  (book, cart) => cart.some(item => item.id===book.id)
 const addAmountItem = (itemCart, amountToAdd) => {return    {...itemCart,amount:itemCart.amount + amountToAdd}}
-const updateCartWithBookSelected = (book, cart,amountItem) =>  cart.map( itemCart => (itemCart.id === book.id)?addAmountItem(ItemCart,amountItem):itemCart) 
+const updateCartWithBookSelected = (book, cart,amountItem) =>  cart.map( itemCart => (itemCart.id === book.id)?addAmountItem(itemCart,amountItem):itemCart) 
 const addNewBookToCart = (cart, book,amountItem) => {
     const {title,imageLinks} = book.volumeInfo
     const {amount} = book.saleInfo.listPrice
