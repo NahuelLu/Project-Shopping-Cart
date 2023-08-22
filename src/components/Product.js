@@ -1,19 +1,27 @@
 import '../styles/Product.css'
 import { useState } from 'react'
 import ItemCart from './ItemCart'
+import { useShopContext } from './ShopContext'
 
 
 const alreadyExistsBookInCart =  (book, cart) => cart.some(item => item.id===book.id)
 const addAmountItem = (itemCart, amountToAdd) => {return    {...itemCart,amount:itemCart.amount + amountToAdd}}
 const updateCartWithBookSelected = (book, cart,amountItem) =>  cart.map( itemCart => (itemCart.id === book.id)?addAmountItem(ItemCart,amountItem):itemCart) 
 const addNewBookToCart = (cart, book,amountItem) => {
-    const newBook = {title:book.volumeInfo.title,id:book.id,img:book.volumeInfo.imageLinks.thumbnail,price:book.saleInfo.listPrice.amount,amount:amountItem}
+    const {title,imageLinks} = book.volumeInfo
+    const {amount} = book.saleInfo.listPrice
+    const newBook = {title:title,id:book.id,img:imageLinks.thumbnail,price:amount,amount:amountItem}
     return cart.concat([newBook])
 }
+const updateCart = (cart,book,amountItem)=> {
+   return alreadyExistsBookInCart(book, cart) ? updateCartWithBookSelected(book,cart,amountItem): addNewBookToCart(cart,book,amountItem)
+}
+const bookHasRequiredDataToShowIt = (book)=> book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail && book.volumeInfo.description && book.saleInfo.listPrice
 
-const Product = ({book,setItemsCart})=>{
+const Product = ({book})=>{
     const [buyStatus, setBuyStatus] = useState(false)
     const [amountItem, setAmountItem] = useState(0)
+    const {setItemsCart} = useShopContext()
     const changeBuyState = ()=>{
         buyStatus? setBuyStatus(false) : setBuyStatus(true) 
     }
@@ -30,18 +38,18 @@ const Product = ({book,setItemsCart})=>{
     }
     const handleSubmit = (e)=>{
         e.preventDefault()
-        setItemsCart(prevItemsCart => alreadyExistsBookInCart(book, prevItemsCart) ? updateCartWithBookSelected(book,prevItemsCart,amountItem): addNewBookToCart(prevItemsCart,book,amountItem) )
+        setItemsCart(prevItemsCart => updateCart(prevItemsCart,book,amountItem) )
         setBuyStatus(false)
     }
     
     return(
         <>
-        {book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail && book.volumeInfo.description?
+        {bookHasRequiredDataToShowIt(book)?
             <div className='book-container'>
                 <div>
                     {<img src={book.volumeInfo.imageLinks.thumbnail} alt="Book thumbnail" />}
                 </div>
-                <div>${book.saleInfo.listPrice?book.saleInfo.listPrice.amount:null}</div>
+                <div>${book.saleInfo.listPrice.amount}</div>
                 <button onClick={changeBuyState}>BUY</button>
                 {buyStatus? 
                     <form className='buy-container' onSubmit={handleSubmit}>
