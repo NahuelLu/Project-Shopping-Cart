@@ -21,25 +21,25 @@ const bookHasRequiredDataToShowIt = (book)=> book.volumeInfo.imageLinks && book.
 
 const Product = ({book})=>{
     const [buyStatus, setBuyStatus] = useState(false)
-    const [amountItem, setAmountItem] = useState(0)
+    const [amountBook, setAmountBook] = useState(0)
     const {setItemsCart} = useShopContext()
     const changeBuyState = ()=>{
         buyStatus? setBuyStatus(false) : setBuyStatus(true) 
     }
-    const handlerAmountItem = (e)=>{
-        setAmountItem(Number(e.currentTarget.value))
+    const handlerAmountBook = (e)=>{
+        setAmountBook(Number(e.currentTarget.value))
     }
-    const upAmountItem = (e)=> {
+    const upAmountBook = (e)=> {
         e.preventDefault();
-        setAmountItem(prevAmount => prevAmount + 1)
+        setAmountBook(prevAmount => prevAmount + 1)
     }
-    const downAmountItem = (e)=> {
+    const downAmountBook = (e)=> {
         e.preventDefault();
-        setAmountItem(prevAmount => prevAmount > 0?prevAmount-1:0)
+        setAmountBook(prevAmount => prevAmount > 0?prevAmount-1:0)
     }
     const handleSubmit = (e)=>{
         e.preventDefault()
-        setItemsCart(prevItemsCart => updateCart(prevItemsCart,book,amountItem) )
+        setItemsCart(prevItemsCart => updateCart(prevItemsCart,book,amountBook) )
         setBuyStatus(false)
     }
     
@@ -52,21 +52,24 @@ const Product = ({book})=>{
                 </div>
                 <div>${book.saleInfo.listPrice.amount}</div>
                 <button onClick={changeBuyState}>
-                    <FontAwesomeIcon size='2x'icon={faCartPlus} />
+                <FontAwesomeIcon size='2x'icon={buyStatus?faMinus:faPlus} />
                 </button>
                 {buyStatus && 
                     <form className='buy-container' onSubmit={handleSubmit}>
                         <label htmlFor='itemAmount'>Amount</label>
-                        <input onChange={handlerAmountItem} type='number'id='itemAmount' name='itemAmount' value={amountItem}></input>
-                        <div>
-                            <button onClick={upAmountItem}>
-                                <FontAwesomeIcon icon={faPlus} />
-                            </button>
-                            <button onClick={downAmountItem}>
+                        <input onChange={handlerAmountBook} type='number'id='itemAmount' name='itemAmount' value={amountBook}></input>
+                        <div className='buttons-container'>
+                            <button onClick={downAmountBook}>
                                 <FontAwesomeIcon icon={faMinus} />
                             </button>
+                            
+                            <button>
+                            <FontAwesomeIcon size='2x'icon={faCartPlus} />
+                            </button>
+                            <button onClick={upAmountBook}>
+                                <FontAwesomeIcon icon={faPlus} />
+                            </button>
                         </div>
-                        <button>Add to Cart</button>
                     </form>
                 }
             </div>
