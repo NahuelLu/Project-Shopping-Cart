@@ -1,11 +1,13 @@
+import { sumAll } from '../generalFunctions/functions'
 import '../styles/Cart.css'
 import ItemCart from './ItemCart'
 import { useShopContext } from './ShopContext'
 
 const getTotal = (itemsCart)=>{
-    return  itemsCart
-        .map(item => item.price * item.amount)
-        .reduce((accumulator, current) => current + accumulator,0)
+    const total = sumAll(itemsCart.map(item => item.price* item.amount))
+    const totalRounded = Math.round(total*100)/100
+    return  totalRounded
+
 }
 const Cart = ()=>{
     const {itemsCart} = useShopContext()

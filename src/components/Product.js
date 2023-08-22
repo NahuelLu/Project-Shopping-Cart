@@ -1,7 +1,8 @@
 import '../styles/Product.css'
 import { useState } from 'react'
-import ItemCart from './ItemCart'
 import { useShopContext } from './ShopContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartPlus, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 const alreadyExistsBookInCart =  (book, cart) => cart.some(item => item.id===book.id)
@@ -30,7 +31,7 @@ const Product = ({book})=>{
     }
     const upAmountItem = (e)=> {
         e.preventDefault();
-        setAmountItem(prevAmount => prevAmount +1)
+        setAmountItem(prevAmount => prevAmount + 1)
     }
     const downAmountItem = (e)=> {
         e.preventDefault();
@@ -50,14 +51,20 @@ const Product = ({book})=>{
                     {<img src={book.volumeInfo.imageLinks.thumbnail} alt="Book thumbnail" />}
                 </div>
                 <div>${book.saleInfo.listPrice.amount}</div>
-                <button onClick={changeBuyState}>BUY</button>
+                <button onClick={changeBuyState}>
+                    <FontAwesomeIcon size='2x'icon={faCartPlus} />
+                </button>
                 {buyStatus && 
                     <form className='buy-container' onSubmit={handleSubmit}>
                         <label htmlFor='itemAmount'>Amount</label>
                         <input onChange={handlerAmountItem} type='number'id='itemAmount' name='itemAmount' value={amountItem}></input>
                         <div>
-                            <button onClick={upAmountItem}>+</button>
-                            <button onClick={downAmountItem}>-</button>
+                            <button onClick={upAmountItem}>
+                                <FontAwesomeIcon icon={faPlus} />
+                            </button>
+                            <button onClick={downAmountItem}>
+                                <FontAwesomeIcon icon={faMinus} />
+                            </button>
                         </div>
                         <button>Add to Cart</button>
                     </form>

@@ -4,6 +4,7 @@ import {useEffect} from "react"
 import { useShopContext } from "./ShopContext"
 import ShopItems from "./ShopItems"
 import {useQuery } from '@tanstack/react-query'
+import { sumAll } from "../generalFunctions/functions"
 
 const getBooks = async ()=>{
     const response = await fetch("https://www.googleapis.com/books/v1/volumes?q=inauthor:Anna Pólux")
@@ -21,10 +22,10 @@ export function useAllBooks (){
     return useQuery({ queryKey: ['book'], queryFn: getBooks })
 }
 
-const sumAllItemsPrices = (itemsCart) => {
-    return itemsCart
-        .map(item => item.amount)
-        .reduce((accumulator, currentAmount) => currentAmount + accumulator,0)
+const totalAmountItems = (itemsCart) => {
+    const total = itemsCart.map(item => item.amount)
+    return sumAll(total)
+        
 }
 
 
@@ -41,12 +42,11 @@ const Shop = ()=>{
     },[])
 
     useEffect(()=>{
-        setAmountItems( () => sumAllItemsPrices(itemsCart))
+        setAmountItems( () => totalAmountItems(itemsCart))
     },[itemsCart,setAmountItems])
-
     return(
         <main className="shop-container">
-            <Bar amount={amountItems}></Bar>
+            <Bar amount={totalAmountItems(itemsCart)}></Bar>
             {isLoading ? (
                 <h1>Loading...</h1>
             ) : isError ? (
