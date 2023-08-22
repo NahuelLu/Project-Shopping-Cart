@@ -44,14 +44,14 @@ const Product = ({book})=>{
     
     return(
         <>
-        {bookHasRequiredDataToShowIt(book)?
+        {bookHasRequiredDataToShowIt(book) &&
             <div className='book-container'>
                 <div>
                     {<img src={book.volumeInfo.imageLinks.thumbnail} alt="Book thumbnail" />}
                 </div>
                 <div>${book.saleInfo.listPrice.amount}</div>
                 <button onClick={changeBuyState}>BUY</button>
-                {buyStatus? 
+                {buyStatus && 
                     <form className='buy-container' onSubmit={handleSubmit}>
                         <label htmlFor='itemAmount'>Amount</label>
                         <input onChange={handlerAmountItem} type='number'id='itemAmount' name='itemAmount' value={amountItem}></input>
@@ -61,9 +61,9 @@ const Product = ({book})=>{
                         </div>
                         <button>Add to Cart</button>
                     </form>
-                : null}
+                }
             </div>
-        :null}
+        }
         </>
     )
 }
