@@ -10,13 +10,13 @@ import {
   createBrowserRouter,
   Route,
   RouterProvider,
-  createRoutesFromElements
+  createRoutesFromElements,
 } from "react-router-dom";
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Nav/>}>
-    <Route path="/Homepage" element={<Homepage />} />
-    <Route path="/shop" element={<Shop />}></Route>
+    <Route path="Homepage" element={<Homepage />}></Route>
+    <Route path="shop" element={<Shop />}></Route>
     <Route path="cart" element={<Cart />}></Route>
   </Route>
 ));

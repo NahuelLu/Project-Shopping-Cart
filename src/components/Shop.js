@@ -30,7 +30,7 @@ const totalAmountItems = (itemsCart) => {
 
 
 const Shop = ()=>{
-    const {amountItems,setAmountItems,itemsCart} = useShopContext()
+    const {itemsCart} = useShopContext()
 
     const {isError, isLoading} = useQuery({ queryKey: ['book'], queryFn: getBooks })
     useEffect(() => {
@@ -41,9 +41,7 @@ const Shop = ()=>{
         return ()=>{console.log("Shop Component was unmounted!")}
     },[])
 
-    useEffect(()=>{
-        setAmountItems( () => totalAmountItems(itemsCart))
-    },[itemsCart,setAmountItems])
+
     return(
         <main className="shop-container">
             <Bar amount={totalAmountItems(itemsCart)}></Bar>

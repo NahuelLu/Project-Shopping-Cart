@@ -14,7 +14,6 @@ export function useShopContext() {
 
 export function ShopProvider({ children }) {
     const [amountItems, setAmountItems] = useState(0);
-    const [books, setBooks] = useState([]);
     const [itemsCart, setItemsCart] = useState([]);
     const [images, setImages] = useState([])
 

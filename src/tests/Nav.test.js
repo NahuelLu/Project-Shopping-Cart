@@ -32,5 +32,6 @@ test('navigates to the correct routes when clicked', async() => {
     render(<BrowserRouter><Nav /></BrowserRouter>);
     await user.click(screen.getByRole("heading",{level: 2, name:"Homepage"}));
     await user.click(screen.getByRole("heading",{level: 2, name:"Shop"}));
+    
 });
 
