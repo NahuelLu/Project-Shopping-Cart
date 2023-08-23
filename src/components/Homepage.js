@@ -1,15 +1,10 @@
 import '../styles/Homepage.css'
 import Image from './Image'
-import { useEffect } from 'react'
 import { useShopContext } from './ShopContext'
 
 
 const Homepage = ()=>{
     const {images} = useShopContext()
-    useEffect(()=>{
-        return ()=>{console.log("Component was unmounted!")}
-    },[]
-    )
 
     return(
         <main className="homepage">
