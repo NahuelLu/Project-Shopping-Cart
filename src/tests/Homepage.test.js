@@ -18,3 +18,4 @@ test("Render Homepage with correct length of images",()=>{
     const imgs = screen.getAllByRole('img')
     expect(imgs.length).toEqual(images.length)
 })
+
