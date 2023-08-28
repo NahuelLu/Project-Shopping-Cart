@@ -1,4 +1,5 @@
 import '../styles/Bar.css'
+import PropTypes from "prop-types"
 const Bar = ({amount})=>{
 
     return (
@@ -7,5 +8,7 @@ const Bar = ({amount})=>{
         </nav>
     )
 }
-
+Bar.propTypes ={
+    amount : PropTypes.number
+}
 export default Bar

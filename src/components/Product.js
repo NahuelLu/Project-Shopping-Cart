@@ -3,7 +3,7 @@ import { useState} from 'react'
 import { useShopContext } from './ShopContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
-
+import PropTypes from 'prop-types'
 
 const alreadyExistsBookInCart =  (book, cart) => cart.some(item => item.id===book.id)
 const addAmountItem = (itemCart, amountToAdd) => {return    {...itemCart,amount:itemCart.amount + amountToAdd}}
@@ -80,6 +80,9 @@ const Product = ({book})=>{
         }
         </>
     )
+}
+Product.propTypes ={
+    book : PropTypes.object
 }
 
 export default Product

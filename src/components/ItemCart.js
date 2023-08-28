@@ -1,4 +1,5 @@
 import '../styles/ItemCart.css'
+import PropTypes from 'prop-types'
 const ItemCart = ({item})=>{
     return(
         <div className="item-cart">
@@ -12,4 +13,7 @@ const ItemCart = ({item})=>{
     )
 }
 
+ItemCart.propTypes = {
+    item: PropTypes.object
+}
 export default ItemCart
