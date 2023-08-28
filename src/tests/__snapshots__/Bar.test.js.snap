@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test for Bar component Renders succesfully 20 amount in heading 1`] = `
+<div>
+  <nav
+    class="sticky-bar"
+  >
+    <h4>
+      Items selected: 
+      20
+    </h4>
+  </nav>
+</div>
+`;
+
+exports[`Test for Bar component Renders successfully 1`] = `
+<div>
+  <nav
+    class="sticky-bar"
+  >
+    <h4>
+      Items selected: 
+    </h4>
+  </nav>
+</div>
+`;

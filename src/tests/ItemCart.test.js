@@ -2,10 +2,10 @@ import { render, screen } from "@testing-library/react";
 import ItemCart from "../components/ItemCart";
 
 describe("Tests for ItemCart component",()=>{
-    test("ItemCart component was rendered succesfully without item information",()=>{
+    test("ItemCart component was rendered successfully without item information",()=>{
         render(<ItemCart />)
     })
-    test("ItemCart component was rendered succesfully with item information",()=>{
+    test("ItemCart component was rendered successfully with item information",()=>{
         const itemExample = {
             title: "Item1",
             img: "img1.png",

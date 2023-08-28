@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for Product component Don't render book because doesn't has imageLinks 1`] = `<div />`;
+
+exports[`Tests for Product component Don't render book because doesn't have a description 1`] = `<div />`;
+
+exports[`Tests for Product component Don't render book because doesn't have a price 1`] = `<div />`;
+
+exports[`Tests for Product component Render buy UI when click button 1`] = `
+<div>
+  <div
+    class="book-container"
+  >
+    <div>
+      <img
+        alt="Book thumbnail"
+        src="http://books.google.com/books/content?id=hvTAEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      />
+    </div>
+    <div>
+      $
+      1469.99
+    </div>
+    <button
+      aria-label="buy"
+    >
+      <div>
+        faMinusIcon
+      </div>
+    </button>
+    <form
+      class="buy-container"
+    >
+      <label
+        for="itemAmount"
+      >
+        Amount
+      </label>
+      <input
+        id="itemAmount"
+        name="itemAmount"
+        type="number"
+        value="0"
+      />
+      <div
+        class="buttons-container"
+      >
+        <button
+          aria-label="downAmount"
+        >
+          <div>
+            faMinusIcon
+          </div>
+        </button>
+        <button>
+          <div>
+            faCartPlusIcon
+          </div>
+        </button>
+        <button
+          aria-label="upAmount"
+        >
+          <div>
+            faPlusIcon
+          </div>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Tests for Product component Render successfully book 1`] = `
+<div>
+  <div
+    class="book-container"
+  >
+    <div>
+      <img
+        alt="Book thumbnail"
+        src="http://books.google.com/books/content?id=hvTAEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      />
+    </div>
+    <div>
+      $
+      1469.99
+    </div>
+    <button
+      aria-label="buy"
+    >
+      <div>
+        faPlusIcon
+      </div>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Tests for Product component Up 1 to input amount 1`] = `
+<div>
+  <div
+    class="book-container"
+  >
+    <div>
+      <img
+        alt="Book thumbnail"
+        src="http://books.google.com/books/content?id=hvTAEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+      />
+    </div>
+    <div>
+      $
+      1469.99
+    </div>
+    <button
+      aria-label="buy"
+    >
+      <div>
+        faMinusIcon
+      </div>
+    </button>
+    <form
+      class="buy-container"
+    >
+      <label
+        for="itemAmount"
+      >
+        Amount
+      </label>
+      <input
+        id="itemAmount"
+        name="itemAmount"
+        type="number"
+        value="1"
+      />
+      <div
+        class="buttons-container"
+      >
+        <button
+          aria-label="downAmount"
+        >
+          <div>
+            faMinusIcon
+          </div>
+        </button>
+        <button>
+          <div>
+            faCartPlusIcon
+          </div>
+        </button>
+        <button
+          aria-label="upAmount"
+        >
+          <div>
+            faPlusIcon
+          </div>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+`;

@@ -1,5 +1,5 @@
 import '../styles/Product.css'
-import { useState } from 'react'
+import { useState} from 'react'
 import { useShopContext } from './ShopContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -19,10 +19,15 @@ const updateCart = (cart,book,amountItem)=> {
 }
 const bookHasRequiredDataToShowIt = (book)=> book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail && book.volumeInfo.description && book.saleInfo.listPrice
 
+
+
+
+
 const Product = ({book})=>{
     const [buyStatus, setBuyStatus] = useState(false)
     const [amountBook, setAmountBook] = useState(0)
     const {setItemsCart} = useShopContext()
+
     const changeBuyState = ()=>{
         buyStatus? setBuyStatus(false) : setBuyStatus(true) 
     }
@@ -48,25 +53,24 @@ const Product = ({book})=>{
         {bookHasRequiredDataToShowIt(book) &&
             <div className='book-container'>
                 <div>
-                    {<img src={book.volumeInfo.imageLinks.thumbnail} alt="Book thumbnail" />}
+                    <img src={book.volumeInfo.imageLinks.thumbnail} alt="Book thumbnail" />
                 </div>
                 <div>${book.saleInfo.listPrice.amount}</div>
-                <button onClick={changeBuyState}>
-                <FontAwesomeIcon size='2x'icon={buyStatus?faMinus:faPlus} />
+                <button onClick={changeBuyState} aria-label='buy'>
+                    <FontAwesomeIcon size='2x'icon={buyStatus?faMinus:faPlus} />
                 </button>
                 {buyStatus && 
                     <form className='buy-container' onSubmit={handleSubmit}>
                         <label htmlFor='itemAmount'>Amount</label>
                         <input onChange={handlerAmountBook} type='number'id='itemAmount' name='itemAmount' value={amountBook}></input>
                         <div className='buttons-container'>
-                            <button onClick={downAmountBook}>
+                            <button onClick={downAmountBook} aria-label='downAmount'>
                                 <FontAwesomeIcon icon={faMinus} />
                             </button>
-                            
                             <button>
                             <FontAwesomeIcon size='2x'icon={faCartPlus} />
                             </button>
-                            <button onClick={upAmountBook}>
+                            <button onClick={upAmountBook} aria-label='upAmount'>
                                 <FontAwesomeIcon icon={faPlus} />
                             </button>
                         </div>

@@ -2,17 +2,13 @@ import { render, screen } from "@testing-library/react"
 import Bar from "../components/Bar"
 describe("Test for Bar component",()=>{
 
-    test("Render heading correctly",()=>{
-        const amount = 10
-            render(<Bar amount={amount}/>)
-            const amountContainer = screen.getByRole("heading")
-            expect(amountContainer).toBeInTheDocument()
+    test("Renders successfully",()=>{
+        const {container}= render(<Bar/>)
+        expect(container).toMatchSnapshot()
     })
-    test("Render correctly test from amount",()=>{
+    test("Renders succesfully 20 amount in heading",()=>{
         const amount= 20
-        render(<Bar amount={amount}/>)
-        const amountContainer = screen.getByRole("heading",{level:4})
-        const text = amountContainer.innerHTML
-        expect(text).toEqual("Items selected: 20")
+        const {container} = render(<Bar amount={amount}/>)
+        expect(container).toMatchSnapshot()
     })
 })
