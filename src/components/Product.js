@@ -4,7 +4,7 @@ import { useShopContext } from './ShopContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartPlus, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types'
-
+import { Link } from 'react-router-dom'
 const alreadyExistsBookInCart =  (book, cart) => cart.some(item => item.id===book.id)
 const addAmountItem = (itemCart, amountToAdd) => {return    {...itemCart,amount:itemCart.amount + amountToAdd}}
 const updateCartWithBookSelected = (book, cart,amountItem) =>  cart.map( itemCart => (itemCart.id === book.id)?addAmountItem(itemCart,amountItem):itemCart) 
@@ -47,7 +47,7 @@ const Product = ({book})=>{
         setItemsCart(prevItemsCart => updateCart(prevItemsCart,book,amountBook) )
         setBuyStatus(false)
     }
-    
+
     return(
         <>
         {bookHasRequiredDataToShowIt(book) &&
@@ -74,6 +74,7 @@ const Product = ({book})=>{
                                 <FontAwesomeIcon icon={faPlus} />
                             </button>
                         </div>
+                        <Link to={book.id}>More details</Link>
                     </form>
                 }
             </div>

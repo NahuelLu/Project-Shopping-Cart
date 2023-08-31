@@ -65,6 +65,10 @@ exports[`Tests for Product component Render buy UI when click button 1`] = `
           </div>
         </button>
       </div>
+      <a>
+        Url:
+        hvTAEAAAQBAJ
+      </a>
     </form>
   </div>
 </div>
@@ -155,6 +159,10 @@ exports[`Tests for Product component Up 1 to input amount 1`] = `
           </div>
         </button>
       </div>
+      <a>
+        Url:
+        hvTAEAAAQBAJ
+      </a>
     </form>
   </div>
 </div>

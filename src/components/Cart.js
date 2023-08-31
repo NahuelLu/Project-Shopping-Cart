@@ -1,6 +1,7 @@
 import { sumAll } from '../generalFunctions/functions'
 import '../styles/Cart.css'
 import ItemCart from './ItemCart'
+import PrevButton from './PrevButton'
 import { useShopContext } from './ShopContext'
 
 const getTotal = (itemsCart)=>{
@@ -13,6 +14,7 @@ const Cart = ()=>{
     const {itemsCart} = useShopContext()
     return(
         <div className="cart-container">
+            <PrevButton to="/shop"></PrevButton>
             <h2>Current Cart</h2>
             {itemsCart &&
                 <>

@@ -33,13 +33,6 @@ const Shop = ()=>{
     const {itemsCart} = useShopContext()
 
     const {isError, isLoading} = useQuery({ queryKey: ['book'], queryFn: getBooks })
-    useEffect(() => {
-        console.log("Because component was mounted again then show this msg AGAIN not fetching again!!")
-    }, [])
-    useEffect(()=>{
-        console.log("Shop component was mounted!")
-        return ()=>{console.log("Shop Component was unmounted!")}
-    },[])
 
 
     return(

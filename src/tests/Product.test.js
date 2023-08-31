@@ -37,6 +37,11 @@ jest.mock("@fortawesome/free-solid-svg-icons",()=>{
         faPlus : "faPlusIcon"
     }
 })
+jest.mock('react-router-dom',()=>{
+    return {
+      Link : ({to})=> <a>Url:{to}</a>
+    }
+})
 describe("Tests for Product component",()=>{
     
     test("Render successfully book",()=>{

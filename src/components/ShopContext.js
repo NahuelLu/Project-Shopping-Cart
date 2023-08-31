@@ -16,7 +16,6 @@ export function ShopProvider({ children }) {
     const [amountItems, setAmountItems] = useState(0);
     const [itemsCart, setItemsCart] = useState([]);
     const [images, setImages] = useState([])
-
     const imagesUrl = [Img,Img1,Img2,Img3,Img4,Img5]
 
     useEffect(()=>{
