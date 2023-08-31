@@ -14,6 +14,7 @@ const getBooks = async ()=>{
     if(response.ok){
         console.log("Requesting")
     }
+    console.log(response)
     const data = await response.json()
     const items = data.items
     return items
